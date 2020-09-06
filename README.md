@@ -18,14 +18,23 @@ set `"name": "wasm-3d"` in `package.json`, and also change to:
     "wasm-3d": "file:../pkg"
   },
   ```
+edit first line in `index.js` to: `import * as wasm from "wasm-3d";`
 delete `target` directory (and contents)  
 `$ wasm-pack build`  
 `$ cd www`  
 `$ npm install`  
 edit `index.html` to `<title>Wasm 3D</title>`  
+`$ npm run start` should run app in broswer ' `localhost:8080`  
 `$ cd ..`  
 `$ git init`  
 `$ git add .`  
 `$ git commit -m "first commit"`  
 create repo. "wasm-3d" on GitHub  
-
+`$ git remote add origin git@github.com:jinjagit/wasm-3d.git`  
+`$ git push origin master`  
+Create gh-pages branch on GitHub repo.  
+Go to: https://travis-ci.com/signin and sign in with GitHub  
+Find wasm-3d in repos list  
+Click 'settings' for repo.  
+Add env. var: GITHUB_TOKEN value: \<personal access token value\>  
+Re-run build (will have failed on first push)

@@ -1,4 +1,4 @@
-import * as wasm from "wasm-test";
+import * as wasm from "wasm-3d";
 
 const compareResults = (textElement, tJS, tWasm) => {
   if (tJS < tWasm) {
