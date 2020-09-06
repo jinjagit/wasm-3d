@@ -38,3 +38,5 @@ Find wasm-3d in repos list
 Click 'settings' for repo.  
 Add env. var: GITHUB_TOKEN value: \<personal access token value\>  
 Re-run build (will have failed on first push)
+
+...
