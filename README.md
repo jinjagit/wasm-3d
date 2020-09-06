@@ -99,6 +99,8 @@ replace / edit `lib.rs` to be:
 extern crate wasm_bindgen;
 use wasm_bindgen::prelude::*;
 
+mod utils;
+
 #[wasm_bindgen]
 extern "C" {
     #[wasm_bindgen(js_namespace = console)]
