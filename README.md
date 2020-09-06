@@ -206,7 +206,9 @@ Should now deploy a build via Travis CI
   ------------------------------------------------------  
 
 I have omitted lots of stuff from the tutorial config files, especially from `webpack.config.js`, `cargo.toml`, and `package.json`, and have not included `web.config` at all, since the omissions seem to be irrelevant (unused) at this point. As the tutorial progresses, I may discover various omitted components are, in fact, necessary.  
+  
 I have also omitted some parts of various files from the wasm-test repo. used as a template (which is itself a cut-down version of Siddharth Naithani's wasm-template-rust repo.) Again, I may need to reinstate some of the removed parts.  
+  
 For now, however, things are working, both locally and when deployed.    
 
   ------------------------------------------------------
