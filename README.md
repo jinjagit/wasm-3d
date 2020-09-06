@@ -1,6 +1,12 @@
-# Develop and deploy wasm (compiled from Rust) + JS:
+# Rust wasm 3D
 
-### Note: this process uses Travis CI to deploy to GitHub Pages.
+Following [Rust 3D Graphics in the Browser](https://www.youtube.com/watch?v=p7DtoeuDT5Y&list=PLLqEtX6ql2EyPAZ1M2_C0GgVd4A-_L4_5&index=21&t=966s) tutorials.  
+
+## useful related resources
+* https://webglfundamentals.org/  
+* https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API  
+
+## setup
 
 Clone https://github.com/jinjagit/wasm-test  
 I copied from local disk = got some files not removed by `.gitignore`    
