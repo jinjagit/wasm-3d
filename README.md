@@ -209,7 +209,7 @@ I have omitted lots of stuff from the tutorial config files, especially from `we
   
 I have also omitted some parts of various files from the wasm-test repo. used as a template (which is itself a cut-down version of Siddharth Naithani's wasm-template-rust repo.) Again, I may need to reinstate some of the removed parts.  
 
-It might also be worthwhile to change `mode: "development"` to `mode: "production"` in `webpack.config.sys` at some point.  
+It might also be worthwhile changing `mode: "development"` to `mode: "production"` in `webpack.config.sys` at some point.  
   
 For now, however, things are working, both locally and when deployed.    
 
