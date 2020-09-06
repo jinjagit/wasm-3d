@@ -18,7 +18,7 @@ create `.gitignore` in project root and add:
 **/*.rs.bk
 Cargo.lock
 ```
-add `travis.yml` with contents as on Github repo.  
+add `travis.yml` with contents as in wasm-test template    
 set `"name": "wasm-3d"` in `package.json`, and also change to:  
 ```
 "dependencies": {
@@ -31,7 +31,6 @@ delete `target` directory (and contents)
 `$ wasm-pack build`  
 `$ cd www`  
 `$ npm install`  
-edit `index.html` to `<title>Wasm 3D</title>`  
 `$ npm run start` should run app in broswer ' `localhost:8080`  
 `$ cd ..`  
 `$ git init`  
@@ -197,11 +196,12 @@ replace / edit `index.html` to be:
 ```
 `$ wasm-pack build` from project root 
 `$ cd www`  
-`$ npm run start` should now have tutorial boiler-plate example running @ `localhost:8080` 
+`$ npm run start` should now have tutorial boiler-plate example running @ `localhost:8080`  
 `$ git add .`  
 `$ git commit -m "first commit"`   
 `$ git push origin master` 
-Should now deploy a build via Travis CI == tutorial boiler-plate now deployed  
+Should now deploy a build via Travis CI  
+== tutorial boiler-plate now deployed  
 
   ------------------------------------------------------  
 #### I have omitted lots of stuff from the tutorial config files, especially from `webpack.config.js`, `cargo.toml`, and `package.json`, and have not included `web.config` at all, since the omissions seem to be irrelevant (unused) at this point. As the tutorial progresses, I may discover various omitted components are, in fact, necessary.  
