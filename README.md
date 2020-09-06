@@ -10,7 +10,7 @@ Following [Rust 3D Graphics in the Browser](https://www.youtube.com/watch?v=p7Dt
 
 Clone https://github.com/jinjagit/wasm-test  
 I copied from local disk = got some files not removed by `.gitignore`    
-(my template is adapted from Siddharth Naithani's excellent template: https://github.com/sn99/wasm-template-rust)  
+(my template is adapted from [Siddharth Naithani's excellent template](https://github.com/sn99/wasm-template-rust))  
 
 create `.gitignore` in project root and add:  
 ```
