@@ -1,4 +1,4 @@
-# Rust wasm 3D
+# wasm 3D
 
 Following [Rust 3D Graphics in the Browser](https://www.youtube.com/watch?v=p7DtoeuDT5Y&list=PLLqEtX6ql2EyPAZ1M2_C0GgVd4A-_L4_5&index=21&t=966s) tutorials.  
 
