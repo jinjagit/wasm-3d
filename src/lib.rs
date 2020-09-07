@@ -3,7 +3,11 @@ use wasm_bindgen::prelude::*;
 use web_sys::*;
 use web_sys::WebGlRenderingContext as GL;
 
+#[macro_use]
+extern crate lazy_static; 
+
 mod utils;
+mod app_state;
 mod common_funcs;
 mod gl_setup;
 mod programs;
@@ -19,6 +23,7 @@ extern "C" {
 pub struct RustClient {
     gl: WebGlRenderingContext,
     program_color_2d: programs::Color2D,
+    program_color_2d_gradient: programs::Color2DGradient,
 }
 
 #[wasm_bindgen]
@@ -30,26 +35,40 @@ impl RustClient {
         
         Self {
             program_color_2d: programs::Color2D::new(&gl),
+            program_color_2d_gradient: programs::Color2DGradient::new(&gl),
             gl: gl,
         }
     }
 
-    pub fn update(&mut self, _time: f32, _height: f32, _width: f32) -> Result<(), JsValue> {
-
+    pub fn update(&mut self, time: f32, height: f32, width: f32) -> Result<(), JsValue> {
+        app_state::update_dynamic_data(time, height, width);
+        
         Ok(())
     }
 
     pub fn render(&self) {
         self.gl.clear(GL::COLOR_BUFFER_BIT | GL::DEPTH_BUFFER_BIT);
 
+        let curr_state = app_state::get_curr_state();
+
         self.program_color_2d.render(
             &self.gl,
-            0.0,  // bottom
-            10.0, // top
-            0.0,  // left
-            10.0, // right
-            10.0, // canvas_height
-            10.0, // canvas_width
+            curr_state.control_bottom, // bottom
+            curr_state.control_top,    // top
+            curr_state.control_left,   // left
+            curr_state.control_right,  // right
+            curr_state.canvas_height,  // canvas_height
+            curr_state.canvas_width,   // canvas_width
+        );
+
+        self.program_color_2d_gradient.render(
+            &self.gl,
+            curr_state.control_bottom + 20.0,
+            curr_state.control_top - 20.0,
+            curr_state.control_left + 20.0,
+            curr_state.control_right - 20.0,
+            curr_state.canvas_height,
+            curr_state.canvas_width,
         );
     }
 }

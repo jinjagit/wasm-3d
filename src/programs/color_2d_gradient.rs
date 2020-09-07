@@ -4,7 +4,7 @@ use web_sys::*;
 use js_sys::WebAssembly;
 use super::super::common_funcs as cf;
 
-pub struct Color2D {
+pub struct Color2DGradient {
     program: WebGlProgram,
     rect_vertice_ary_length: usize,
     rect_vertice_buffer: WebGlBuffer,
@@ -13,12 +13,12 @@ pub struct Color2D {
     u_transform: WebGlUniformLocation,
 }
 
-impl Color2D {
+impl Color2DGradient {
     pub fn new(gl: &WebGlRenderingContext) -> Self {
         let program = cf::link_program(
             &gl,
-            super::super::shaders::vertex::color_2d::SHADER,
-            super::super::shaders::fragment::color_2d::SHADER,
+            super::super::shaders::vertex::color_2d_gradient::SHADER,
+            super::super::shaders::fragment::color_2d_gradient::SHADER,
         ).unwrap();
 
         let vertices_rect: [f32; 12] = [
@@ -71,9 +71,9 @@ impl Color2D {
 
         gl.uniform4f(
             Some(&self.u_color),
-            0.0, // r
-            0.5, // g
-            0.5, // b
+            0.5, // r
+            0.0, // g
+            0.0, // b
             1.0, // a
         );
 
