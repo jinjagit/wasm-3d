@@ -282,7 +282,7 @@ For now, however, things are working, both locally and when deployed.
 
 ### changes:
 to files / instructions in `setup`, above:  
-* Re-enabled auto wasm recompile & browser reload on edit of Rust file(s): replaced tutorial's `WasmPackPlugin` in `webpack.config.sys`, including editing line to `crateDirectory: path.resolve(__dirname, '..')` to set webpack to watch correct Rust files location `"@wasm-tool/wasm-pack-plugin": "0.4.2"` to `package.json`  
+* Re-enabled auto wasm recompile & browser reload on edit of Rust file(s): replaced tutorial's `WasmPackPlugin` in `webpack.config.sys`, including editing line to `crateDirectory: path.resolve(__dirname, '..')` to set webpack to watch correct Rust files location + added `"@wasm-tool/wasm-pack-plugin": "0.4.2"` to `package.json`  (deploy OK)  
 
 index.js:  
 * some code removed (as moved to Rust code)  
