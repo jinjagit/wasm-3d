@@ -94,6 +94,68 @@ features = [
 [package.metadata.wasm-pack.profile.release]
 wasm-opt = false
 ```  
+replace / edit `webpack.config.sys` to be:  
+```
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const WasmPackPlugin = require('@wasm-tool/wasm-pack-plugin');
+const path = require('path');
+
+module.exports = {
+  entry: "./bootstrap.js",
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "bootstrap.js",
+  },
+  mode: "development",
+  plugins: [
+    new CopyWebpackPlugin(['index.html']),
+    new WasmPackPlugin({
+      crateDirectory: path.resolve(__dirname, '..')
+    })
+  ],
+};
+```
+replace / edit `package.json` to be:
+```
+{
+  "name": "wasm-3d",
+  "version": "0.1.0",
+  "description": "following the Rust 3D Graphics in the Browser tutrial, by Doug Milford",
+  "main": "index.js",
+  "bin": {
+    "create-wasm-app": ".bin/create-wasm-app.js"
+  },
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sn99/wasm-template-rust.git"
+  },
+  "keywords": [
+    "webassembly",
+    "wasm",
+    "rust",
+    "webpack",
+    "template"
+  ],
+  "author": "sn99 <siddharthn.099@gmail.com>",
+  "license": "(MIT OR Apache-2.0)",
+  "homepage": "https://github.com/sn99/wasm-template-rust/blob/master/README.md",
+  "dependencies": {
+    "wasm-3d": "file:../pkg"
+  },
+  "devDependencies": {
+    "hello-wasm-pack": "^0.1.0",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5",
+    "copy-webpack-plugin": "^5.0.0",
+    "@wasm-tool/wasm-pack-plugin": "0.4.2"
+  }
+}
+```
 replace / edit `lib.rs` to be:   
 ```
 extern crate wasm_bindgen;
@@ -216,3 +278,14 @@ It might also be worthwhile changing `mode: "development"` to `mode: "production
 For now, however, things are working, both locally and when deployed.    
 
   ------------------------------------------------------
+## Part 2: [2D Graphics](https://www.youtube.com/watch?v=kjYCSySObDo&list=PLLqEtX6ql2EyPAZ1M2_C0GgVd4A-_L4_5&index=21)  
+
+### changes:
+to files / instructions in `setup`, above:  
+* Re-enabled auto wasm recompile & browser reload on edit of Rust file(s): replaced tutorial's `WasmPackPlugin` in `webpack.config.sys`, including editing line to `crateDirectory: path.resolve(__dirname, '..')` to set webpack to watch correct Rust files location `"@wasm-tool/wasm-pack-plugin": "0.4.2"` to `package.json`  
+
+index.js:  
+* some code removed (as moved to Rust code)  
+
+Rust:  
+* new Rust files created, and existing lib.rs edited/developed  
